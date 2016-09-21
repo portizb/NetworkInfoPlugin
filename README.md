@@ -10,7 +10,7 @@ Create a new Cordova Project
     
 Install the plugin
 
-    $ cd hello
+    $ cd netinfo
     $ cordova plugin add https://github.com/portizb/networkinformation.git
     
 

@@ -1,19 +1,40 @@
 # Cordova NetworkInformation Plugin
+==========================================
 
-Simple plugin that returns your network information.
+This repo contains an example project which illustrates use of the [Network Information Cordova/Phonegap plugin](https://github.com/portizb/networkinformation).
 
-## Using
+<!-- START table-of-contents -->
+**Table of Contents**
 
-Create a new Cordova Project
+- [Downloading](#downloading)
+- [Building and running](#building-and-running)
+
+<!-- END table-of-contents -->
+
+## Overview
+
+This Cordova plugin for Android is used to obtain network information such as ip address, network address and network mask.
+
+## Building for Android
+
+This plugin must not depend on libraries only present in API 23+, so you __don't need build using Android SDK Platform v23 or above__. This removes the dependency on API 23 and will allow you to build against legacy API versions (22 and below). You can check the currently installed platform versions with the following command:
+
+    cordova platform ls
+
+
+## Installation
+
+### Using the Cordova CLI
+
+#### Create the project
 
     $ cordova create netinfo com.telefonica.movistar.netinfo NetworkInformation
     
-Install the plugin
+#### Install the plugin
 
     $ cd netinfo
     $ cordova plugin add https://github.com/portizb/networkinformation.git
     
-
 Edit `www/js/index.js` and add the following code inside `onDeviceReady`
 
 ```js
@@ -28,13 +49,21 @@ Edit `www/js/index.js` and add the following code inside `onDeviceReady`
     netinfo.lookup("172.26.23.22", success, failure);
 ```
 
+### Building and running
+
+The plugin currently only supports the Android platform.
+
 Install Android platform
 
     cordova platform add android
+
+Build the code
+
+    cordova build android
     
 Run the code
 
-    cordova run 
+    cordova run android
 
 ## More Info
 

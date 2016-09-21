@@ -7,8 +7,9 @@ This repo contains an example project which illustrates use of the [Network Info
 **Table of Contents**
 
 - [Overview](#overview)
-- [Downloading](#downloading)
+- [Installation](#installation)
 - [Building and running](#building-and-running)
+- [More Info](#more-info)
 
 <!-- END table-of-contents -->
 
@@ -50,7 +51,7 @@ Edit `www/js/index.js` and add the following code inside `onDeviceReady`
     netinfo.lookup("172.26.23.22", success, failure);
 ```
 
-### Building and running
+## Building and running
 
 The plugin currently only supports the Android platform.
 

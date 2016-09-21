@@ -1,8 +1,6 @@
 # Cordova NetworkInformation Plugin
 ==========================================
 
-This repo contains an example project which illustrates use of the [Network Information Cordova/Phonegap plugin](https://github.com/portizb/networkinformation).
-
 <!-- START table-of-contents -->
 **Table of Contents**
 
@@ -15,7 +13,7 @@ This repo contains an example project which illustrates use of the [Network Info
 
 ## Overview
 
-This Cordova plugin for Android is used to obtain network information such as ip address, network address and network mask.
+This Cordova plugin for Android is used to request the information of network such as ip address, network address and network mask.
 
 ## Building for Android
 

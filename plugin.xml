@@ -18,7 +18,7 @@
       <param name="android-package" value="com.telefonica.movistar.NetworkInformation"/>
     </feature>
   </config-file>
-  <source-file src="src/android/Hello.java" target-dir="src/com/telefonica/movistar/"/>
+  <source-file src="src/android/NetworkInformation.java" target-dir="src/com/telefonica/movistar/"/>
 </platform>
 
 </plugin>

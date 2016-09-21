@@ -55,15 +55,15 @@ Edit `www/js/index.js` and add the following code inside `onDeviceReady`
 
 The plugin currently only supports the Android platform.
 
-Install Android platform
+# Install Android platform
 
     cordova platform add android
 
-Build the code
+# Build the code
 
     cordova build android
     
-Run the code
+# Run the code
 
     cordova run android
 

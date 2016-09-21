@@ -6,6 +6,7 @@ This repo contains an example project which illustrates use of the [Network Info
 <!-- START table-of-contents -->
 **Table of Contents**
 
+- [Overview](#overview)
 - [Downloading](#downloading)
 - [Building and running](#building-and-running)
 

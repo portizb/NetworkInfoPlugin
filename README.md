@@ -5,7 +5,7 @@
 **Table of Contents**
 
 - [Overview](#overview)
-- [Installation](#installation)
+- [Installing](#installing)
 - [Building and running](#building-and-running)
 - [More Info](#more-info)
 
@@ -22,7 +22,10 @@ This plugin must not depend on libraries only present in API 23+, so you __don't
     cordova platform ls
 
 
-## Installation
+## Installing
+
+**IMPORTANT:** Note that the plugin will **NOT** work in a browser-emulated Cordova environment, for example by running `cordova serve` or using the [Ripple emulator](https://github.com/ripple-emulator/ripple).
+This plugin is intended to launch **native** navigation apps and therefore will only work on native mobile platforms (i.e. Android).
 
 ### Using the Cordova CLI
 
@@ -51,7 +54,7 @@ Edit `www/js/index.js` and add the following code inside `onDeviceReady`
 
 ## Building and running
 
-The plugin currently only supports the Android platform.
+To run an example project on Android using the Cordova CLI:
 
 # Install Android platform
 

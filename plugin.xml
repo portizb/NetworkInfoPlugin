@@ -9,19 +9,26 @@
 <engines>
   <engine name="cordova" version=">=3.4.0"/>
 </engines>
+
 <asset src="www/netinfo.js" target="js/netinfo.js"/>
 
 <js-module src="www/netinfo.js" name="netinfo">
   <clobbers target="netinfo" />
 </js-module>
 
+<license>Apache 2.0</license>
+
+<preference name="APP_ID" />
+<preference name="APP_NAME" />
+
 <platform name="android">
   <config-file target="res/xml/config.xml" parent="/*">
     <feature name="NetworkInfoPlugin">
       <param name="android-package" value="com.telefonica.movistar.cordova.plugin.NetworkInfoPlugin"/>
     </feature>
+
   </config-file>
-  
+
   <framework src="platforms/android/NetworkInfoLib" custom="true" />
   
   <!-- cordova plugin src files -->

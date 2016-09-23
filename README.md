@@ -49,7 +49,7 @@ Edit `www/js/index.js` and add the following code inside `onDeviceReady`
         alert("Error calling NetworkInformation Plugin");
     }
 
-    netinfo.lookup(null, success, failure);
+    netinfo.lookup(success, failure);
 ```
 
 ## Building and running

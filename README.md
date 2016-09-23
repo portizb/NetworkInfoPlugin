@@ -31,7 +31,7 @@ This plugin is intended to launch **native** navigation apps and therefore will 
 
 #### Create the project
 
-    $ cordova create netinfo com.telefonica.movistar.netinfo NetworkInformation
+    $ cordova create netinfo netinfo-plugin NetworkInformation
     
 #### Install the plugin
 

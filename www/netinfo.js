@@ -2,6 +2,6 @@
 
 module.exports = {
     lookup: function (name, successCallback, errorCallback) {
-        cordova.exec(successCallback, errorCallback, "NetworkInformation", "lookup", [name]);
+        cordova.exec(successCallback, errorCallback, "NetworkInfo", "lookup", [name]);
     }
 };

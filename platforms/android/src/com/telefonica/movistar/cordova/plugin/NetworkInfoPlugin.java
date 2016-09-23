@@ -21,12 +21,8 @@ public class NetworkInfoPlugin extends CordovaPlugin {
             try {
 
                 NetworkInfo networkInfo = NetworkInfoProvider.getNetworkInfo();
-
-                if (networkInfo != null)
-                    message = networkInfo.toString();
-                else
-                    message = "Network Information not found";
-
+                String message = (networkInfo == null) ? "Network Information not found" : networkInfo.toString();
+                
                 callbackContext.success(message);
                 return true;
 

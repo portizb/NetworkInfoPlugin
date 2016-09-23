@@ -22,7 +22,7 @@ package com.telefonica.movistar.netinfo;
 import android.os.Bundle;
 import org.apache.cordova.*;
 
-public class NetInfoActivity extends CordovaActivity
+public class NetworkInfoActivity extends CordovaActivity
 {
     @Override
     public void onCreate(Bundle savedInstanceState)

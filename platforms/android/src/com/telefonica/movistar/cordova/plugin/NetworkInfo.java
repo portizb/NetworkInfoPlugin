@@ -6,8 +6,8 @@ import org.json.JSONException;
 
 import android.util.Log;
 
-import com.telefonica.movistar.net.GatewayResolver;
-import com.telefonica.movistar.net.GatewayAddressInfo;
+import com.telefonica.movistar.net.NetworkInfo;
+import com.telefonica.movistar.net.NetworkInfoProvider;
 
 public class NetworkInfo extends CordovaPlugin {
 
@@ -20,15 +20,12 @@ public class NetworkInfo extends CordovaPlugin {
 
             try {
 
-                String ip = data.getString(0);
-                String message = "Lookup " + ip;
+                NetworkInfo networkInfo = NetworkInfoProvider.getNetworkInfo();
 
-                GatewayAddressInfo gwAddress = GatewayResolver.lookup("172.26.23.22");
-
-                if (gwAddress != null)
-                    message = "Gateway " +  gwAddress.getIpAddress().getHostAddress() + " for ip " + ip;
+                if (networkInfo != null)
+                    message = networkInfo.toString();
                 else
-                    message = "Gateway not found for ip " + ip;
+                    message = "Network Information not found!"";
 
                 callbackContext.success(message);
                 return true;

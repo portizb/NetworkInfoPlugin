@@ -9,9 +9,9 @@ import android.util.Log;
 import com.telefonica.movistar.net.NetworkInfo;
 import com.telefonica.movistar.net.NetworkInfoProvider;
 
-public class NetworkInfo extends CordovaPlugin {
+public class NetworkInfoPlugin extends CordovaPlugin {
 
-    private static final String LOG_TAG = "NetworkInfo";
+    private static final String LOG_TAG = "NetworkInfoPlugin";
 
     @Override
     public boolean execute(String action, JSONArray data, CallbackContext callbackContext) throws JSONException {

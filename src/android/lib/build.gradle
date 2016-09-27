@@ -1,0 +1,125 @@
+/* Licensed to the Apache Software Foundation (ASF) under one
+   or more contributor license agreements.  See the NOTICE file
+   distributed with this work for additional information
+   regarding copyright ownership.  The ASF licenses this file
+   to you under the Apache License, Version 2.0 (the
+   "License"); you may not use this file except in compliance
+   with the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing,
+   software distributed under the License is distributed on an
+   "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+   KIND, either express or implied.  See the License for the
+   specific language governing permissions and limitations
+   under the License.
+*/
+
+apply plugin: 'android-library'
+
+android {
+    compileSdkVersion cdvCompileSdkVersion
+    buildToolsVersion cdvBuildToolsVersion
+    publishNonDefault true
+
+    repositories {
+        mavenCentral()
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_6
+        targetCompatibility JavaVersion.VERSION_1_6
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            resources.srcDirs = ['src']
+            aidl.srcDirs = ['src']
+            renderscript.srcDirs = ['src']
+            res.srcDirs = ['res']
+            assets.srcDirs = ['assets']
+
+            jniLibs.srcDir 'libs'
+            jni.srcDirs = []
+        }
+    }
+
+    productFlavors {
+        x86 {
+            ndk {
+                abiFilter "x86"
+            }
+        }
+        mips {
+            ndk {
+                abiFilter "mips"
+            }
+        }
+        arm7 {
+            ndk {
+                abiFilter 'armeabi-v7a'
+            }
+        }
+        arm8 {
+            ndk {
+                abiFilters 'arm64-v8a'
+            }
+        }
+        arm {
+            ndk {
+                abiFilter 'armeabi'
+            }
+        }
+    }
+
+    defaultConfig {
+        ndk {
+            moduleName "NetworkInfoLib"
+        }
+    }
+
+    // Call regular ndk-build (.cmd) script from the app directory
+    /*task ndkBuild(type: Exec) {
+        commandLine 'ndk-build', '-C', file('src/main/').absolutePath
+    }*/
+
+    task ndkBuild(type: Exec, description: 'Compile JNI source via NDK') {
+        def ndkDir = android.ndkDirectory
+        commandLine "$ndkDir/ndk-build",
+                '-C', file('jni').absolutePath,
+                '-j', Runtime.runtime.availableProcessors(),
+                'all',
+                'NDK_DEBUG=1'
+    }
+
+    task ndkClean(type: Exec, description: 'Clean JNI object files') {
+        def ndkDir = android.ndkDirectory
+        commandLine "$ndkDir/ndk-build",
+                '-C', file('jni').absolutePath,
+                'clean'
+    }
+
+    clean.dependsOn 'ndkClean'
+
+    tasks.withType(JavaCompile) {
+        compileTask -> compileTask.dependsOn ndkBuild
+    }
+
+    dependencies {
+        compile fileTree(dir: 'libs', include: ['*.jar'])
+        compile 'com.android.support:appcompat-v7:23.4.0'
+        compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
+
+        classpath 'com.android.tools.build:gradle-experimental:0.7.0'
+    }
+
+    externalNativeBuild {
+        cmake {
+            arguments '-DANDROID_TOOLCHAIN=clang'
+        }
+    }
+
+}

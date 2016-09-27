@@ -1,7 +1,7 @@
 package com.telefonica.movistar.net;
 
-import com.telefonica.movistar.android.net.netlink.RtNetlinkAddressMessage;
-import com.telefonica.movistar.android.net.netlink.RtNetlinkRouteMessage;
+//import com.telefonica.movistar.android.net.netlink.RtNetlinkAddressMessage;
+//import com.telefonica.movistar.android.net.netlink.RtNetlinkRouteMessage;
 
 /**
  * Created by pablo on 14/09/16.
@@ -36,6 +36,6 @@ public class NetworkInfoProvider {
             }
         }
 
-        return null;
-    }*/
+        return null;*/
+    }
 }

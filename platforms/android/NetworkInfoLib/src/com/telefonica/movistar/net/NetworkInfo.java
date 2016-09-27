@@ -49,8 +49,8 @@ public class NetworkInfo {
         final String networkAddress = (mNetworkAddress == null) ? "" : mNetworkAddress.getHostAddress();
 
         return "NetworkInfo{ "
-                + "ipAddress{" + ipAddress + "} "
-                + "gatewayAddress{" + gatewayAddress + "} "
+                + "ipAddress{" + ipAddress + "}, "
+                + "gatewayAddress{" + gatewayAddress + "}, "
                 + "networkAddress{" + networkAddress + "}, "
                 + "subnetMask{" + mSubnetMask + "} "
                 + "}";

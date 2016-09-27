@@ -1,5 +1,5 @@
-# Cordova NetworkInformation Plugin
-==========================================
+# Cordova Network Information Plugin
+====================================
 
 <!-- START table-of-contents -->
 **Table of Contents**

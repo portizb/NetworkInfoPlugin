@@ -52,7 +52,7 @@ public class NetworkInfo {
                 + "ipAddress{" + ipAddress + "} "
                 + "gatewayAddress{" + gatewayAddress + "} "
                 + "networkAddress{" + networkAddress + "}, "
-                + "subnetMask{" + mSubnetMask + "}, "
+                + "subnetMask{" + mSubnetMask + "} "
                 + "}";
     }
 }

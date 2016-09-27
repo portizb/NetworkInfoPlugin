@@ -1,4 +1,4 @@
-package com.telefonica.movistar.net;
+package com.movistar.tvsindesco.net;
 
 /**
 * Created by pablo on 14/09/16.

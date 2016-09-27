@@ -323,7 +323,7 @@ static jboolean javaSocketAddressToSockaddr(
 
 
 
-jobject Java_com_telefonica_movistar_android_system_Os_socket(JNIEnv* env, jclass clazz, jint domain, jint type, jint protocol)
+jobject Java_com_movistar_tvsindesco_android_system_Os_socket(JNIEnv* env, jclass clazz, jint domain, jint type, jint protocol)
 {
     int fd;
 
@@ -333,7 +333,7 @@ jobject Java_com_telefonica_movistar_android_system_Os_socket(JNIEnv* env, jclas
     return fd != -1 ? jniCreateFileDescriptor(env, fd) : NULL;
 }
 
-void Java_com_telefonica_movistar_android_system_Os_connect(JNIEnv* env, jclass clazz, jobject fileDescriptor, jobject socketAddress)
+void Java_com_movistar_tvsindesco_android_system_Os_connect(JNIEnv* env, jclass clazz, jobject fileDescriptor, jobject socketAddress)
 {
     struct sockaddr_storage ss;
     socklen_t sa_len;
@@ -350,7 +350,7 @@ void Java_com_telefonica_movistar_android_system_Os_connect(JNIEnv* env, jclass 
         throwErrnoException (env, "connect", errno);
 }
 
-void Java_com_telefonica_movistar_android_system_Os_bind(JNIEnv* env, jclass clazz, jobject fileDescriptor, jobject socketAddress)
+void Java_com_movistar_tvsindesco_android_system_Os_bind(JNIEnv* env, jclass clazz, jobject fileDescriptor, jobject socketAddress)
 {
     struct sockaddr_storage ss;
     socklen_t sa_len;
@@ -367,7 +367,7 @@ void Java_com_telefonica_movistar_android_system_Os_bind(JNIEnv* env, jclass cla
         throwErrnoException (env, "bind", errno);
 }
 
-void Java_com_telefonica_movistar_android_system_Os_close(JNIEnv* env, jclass clazz, jobject fileDescriptor)
+void Java_com_movistar_tvsindesco_android_system_Os_close(JNIEnv* env, jclass clazz, jobject fileDescriptor)
 {
     int fd = jniGetFDFromFileDescriptor (env, fileDescriptor);
     jniSetFileDescriptorOfFD(env, fileDescriptor, -1);
@@ -376,7 +376,7 @@ void Java_com_telefonica_movistar_android_system_Os_close(JNIEnv* env, jclass cl
         throwErrnoException (env, "close", errno);
 }
 
-jobject Java_com_telefonica_movistar_android_system_Os_getsockname(JNIEnv* env, jclass clazz, jobject fileDescriptor)
+jobject Java_com_movistar_tvsindesco_android_system_Os_getsockname(JNIEnv* env, jclass clazz, jobject fileDescriptor)
 {
     struct sockaddr_storage ss;
     struct sockaddr* sa = (struct sockaddr*)(&ss);
@@ -396,7 +396,7 @@ jobject Java_com_telefonica_movistar_android_system_Os_getsockname(JNIEnv* env, 
 }
 
 
-void Java_com_telefonica_movistar_android_system_Os_setsockoptInt(JNIEnv* env, jclass clazz, jobject fileDescriptor, jint level, jint option, jint value)
+void Java_com_movistar_tvsindesco_android_system_Os_setsockoptInt(JNIEnv* env, jclass clazz, jobject fileDescriptor, jint level, jint option, jint value)
 {
     int fd = jniGetFDFromFileDescriptor(env, fileDescriptor);
 
@@ -404,7 +404,7 @@ void Java_com_telefonica_movistar_android_system_Os_setsockoptInt(JNIEnv* env, j
         throwErrnoException (env, "setsockopt", errno);
 }
 
-void Java_com_telefonica_movistar_android_system_Os_setsockoptTimeval(JNIEnv* env, jclass clazz, jobject fileDescriptor, jint level, jint option, jobject javaTimeval)
+void Java_com_movistar_tvsindesco_android_system_Os_setsockoptTimeval(JNIEnv* env, jclass clazz, jobject fileDescriptor, jint level, jint option, jobject javaTimeval)
 {
     jclass fdClass = (*env)->GetObjectClass(env, javaTimeval);
 
@@ -424,7 +424,7 @@ void Java_com_telefonica_movistar_android_system_Os_setsockoptTimeval(JNIEnv* en
     }
 }
 
-jint Java_com_telefonica_movistar_android_system_Os_readBytes(JNIEnv* env, jclass clazz, jobject fileDescriptor, jbyteArray javaBytes, jint byteOffset, jint byteCount)
+jint Java_com_movistar_tvsindesco_android_system_Os_readBytes(JNIEnv* env, jclass clazz, jobject fileDescriptor, jbyteArray javaBytes, jint byteOffset, jint byteCount)
 {
     ssize_t size;
     jsize bufLen = byteCount - byteOffset;
@@ -440,14 +440,14 @@ jint Java_com_telefonica_movistar_android_system_Os_readBytes(JNIEnv* env, jclas
     return (jint)size;
 }
 
-jint Java_com_telefonica_movistar_android_system_Os_readv(JNIEnv* env, jclass clazz, jobject fileDescriptor, jobjectArray buffers, jintArray offsets, jintArray byteCounts) {
+jint Java_com_movistar_tvsindesco_android_system_Os_readv(JNIEnv* env, jclass clazz, jobject fileDescriptor, jobjectArray buffers, jintArray offsets, jintArray byteCounts) {
     ssize_t size = 0;
 
     // TODO
     return size;
 }
 
-jint Java_com_telefonica_movistar_android_system_Os_writeBytes(JNIEnv* env, jclass clazz, jobject fileDescriptor, jbyteArray javaBytes, jint byteOffset, jint byteCount) {
+jint Java_com_movistar_tvsindesco_android_system_Os_writeBytes(JNIEnv* env, jclass clazz, jobject fileDescriptor, jbyteArray javaBytes, jint byteOffset, jint byteCount) {
     ssize_t size;
     jbyte* ptrBytes = (*env)->GetByteArrayElements(env, javaBytes, NULL);
 
@@ -465,7 +465,7 @@ jint Java_com_telefonica_movistar_android_system_Os_writeBytes(JNIEnv* env, jcla
     return (jint)size;
 }
 
-jint Java_com_telefonica_movistar_android_system_Os_writev(JNIEnv* env, jclass clazz, jobject fileDescriptor, jobjectArray buffers, jintArray offsets, jintArray byteCounts)
+jint Java_com_movistar_tvsindesco_android_system_Os_writev(JNIEnv* env, jclass clazz, jobject fileDescriptor, jobjectArray buffers, jintArray offsets, jintArray byteCounts)
 {
     ssize_t size = -1, i;
     struct iovec *iov = NULL;
@@ -532,7 +532,7 @@ jint Java_com_telefonica_movistar_android_system_Os_writev(JNIEnv* env, jclass c
     return size;
 }
 
-jlong Java_com_telefonica_movistar_android_system_Os_sysconf(JNIEnv* env, jclass clazz, jint name) {
+jlong Java_com_movistar_tvsindesco_android_system_Os_sysconf(JNIEnv* env, jclass clazz, jint name) {
     errno = 0;
 
     long result = sysconf(name);

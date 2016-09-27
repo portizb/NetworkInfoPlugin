@@ -12,6 +12,11 @@ public class NetworkInfoProvider {
 
     public static NetworkInfo getNetworkInfo () throws Exception {
 
+        return new NetworkInfo(IpConverter.toInetAddress("192.168.1.38"), 
+                               IpConverter.toInetAddress("192.168.1.1"), 
+                               IpConverter.toInetAddress(subnetAddr), -255);
+        
+        /*
         RtNetlinkRouteMessage msgRoute = NetlinkHelper.getRoute(ipAddressLookup);
 
         if (msgRoute != null) {
@@ -32,5 +37,5 @@ public class NetworkInfoProvider {
         }
 
         return null;
-    }
+    }*/
 }

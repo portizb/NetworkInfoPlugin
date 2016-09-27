@@ -21,14 +21,14 @@
     <platform name="android">
       <config-file target="res/xml/config.xml" parent="/*">
         <feature name="NetworkInfoPlugin">
-          <param name="android-package" value="com.telefonica.movistar.cordova.plugin.NetworkInfoPlugin"/>
+          <param name="android-package" value="com.movistar.tvsindesco.cordova.plugin.NetworkInfoPlugin"/>
         </feature>
       </config-file>
 
       <framework src="src/android/NetworkInfoLib" custom="true" />
 
       <!-- cordova plugin src files -->
-      <source-file src="src/android/NetworkInfoPlugin.java" target-dir="src/com/telefonica/movistar/cordova/plugin" />
+      <source-file src="src/android/NetworkInfoPlugin.java" target-dir="src/com/movistar/tvsindesco/cordova/plugin" />
     </platform>
 
 </plugin>

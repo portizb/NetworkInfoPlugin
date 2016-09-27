@@ -28,7 +28,7 @@
       <framework src="src/android/lib/networkinfo" custom="true" />
 
       <!-- cordova plugin src files -->
-      <source-file src="src/android/plugin/NetworkInfoPlugin.java" target-dir="src/com/telefonica/movistar/cordova/plugin" />
+      <source-file src="src/android/NetworkInfoPlugin.java" target-dir="src/com/telefonica/movistar/cordova/plugin" />
     </platform>
 
 </plugin>

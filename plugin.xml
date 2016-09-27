@@ -3,33 +3,32 @@
         xmlns:android="http://schemas.android.com/apk/res/android" 
         id="com.telefonica.movistar.netinfo" version="0.7.0">
   
-<name>NetworkInfoPlugin</name>
-<description>Cordova Network Information Plugin</description>
+  <name>NetworkInfoPlugin</name>
+  <description>Cordova Network Information Plugin</description>
 
-<engines>
-  <engine name="cordova" version=">=3.4.0"/>
-</engines>
+  <engines>
+    <engine name="cordova" version=">=3.4.0"/>
+  </engines>
 
-<asset src="www/netinfo.js" target="js/netinfo.js"/>
+  <asset src="www/netinfo.js" target="js/netinfo.js"/>
 
-<js-module src="www/netinfo.js" name="netinfo">
-  <clobbers target="netinfo" />
-</js-module>
+    <js-module src="www/netinfo.js" name="netinfo">
+      <clobbers target="netinfo" />
+    </js-module>
 
-<license>Apache 2.0</license>
+    <license>Apache 2.0</license>
 
-<platform name="android">
-  <config-file target="res/xml/config.xml" parent="/*">
-    <feature name="NetworkInfoPlugin">
-      <param name="android-package" value="com.telefonica.movistar.cordova.plugin.NetworkInfoPlugin"/>
-    </feature>
+    <platform name="android">
+      <config-file target="res/xml/config.xml" parent="/*">
+        <feature name="NetworkInfoPlugin">
+          <param name="android-package" value="com.telefonica.movistar.cordova.plugin.NetworkInfoPlugin"/>
+        </feature>
+      </config-file>
 
-  </config-file>
+      <framework src="platforms/android/NetworkInfoLib" custom="true" target-dir="." />
 
-  <framework src="platforms/android/NetworkInfoLib" custom="true" />
-  
-  <!-- cordova plugin src files -->
-<source-file src="platforms/android/src/com/telefonica/movistar/cordova/plugin/NetworkInfoPlugin.java" target-dir="src/com/telefonica/movistar/cordova/plugin" />
-</platform>
+      <!-- cordova plugin src files -->
+      <source-file src="src/android/NetworkInfoPlugin.java" target-dir="src/com/telefonica/movistar/cordova/plugin" />
+    </platform>
 
 </plugin>

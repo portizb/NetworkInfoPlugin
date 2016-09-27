@@ -25,7 +25,7 @@ public class NetworkInfoProvider {
                     int subnetMask = (0xffffffff << (32 - msgAddr.getIfAddrMsg().ifa_prefix_len));
                     String subnetAddr = IpConverter.toIp(IpConverter.toInteger(msgAddr.getAddress().getHostAddress()) & subnetMask);
 
-                    return new NetworkInfo(msgRoute.getDestination(), msgRoute.getGateway(),
+                    return new NetworkInfo(msgRoute.getSource(), msgRoute.getGateway(),
                           IpConverter.toInetAddress(subnetAddr), subnetMask);
                 }
             }

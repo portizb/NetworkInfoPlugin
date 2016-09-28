@@ -3,8 +3,8 @@ package com.movistar.tvsindesco.android.net.netlink;
 /**
  * Created by pablo on 2/09/16.
  */
-import com.telefonica.movistar.android.system.Os;
-import com.telefonica.movistar.android.system.OsConstants;
+import com.movistar.tvsindesco.android.system.Os;
+import com.movistar.tvsindesco.android.system.OsConstants;
 
 import java.nio.ByteBuffer;
 

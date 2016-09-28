@@ -2,7 +2,7 @@ package com.movistar.tvsindesco.android.net.netlink;
 
 import android.util.Log;
 
-import com.telefonica.movistar.android.system.OsConstants;
+import com.movistar.tvsindesco.android.system.OsConstants;
 
 import java.net.InetAddress;
 import java.nio.ByteBuffer;

@@ -4,8 +4,9 @@ package com.movistar.tvsindesco.android.net.netlink;
  * Created by pablo on 2/09/16.
  */
 
-import com.telefonica.movistar.android.system.OsConstants;
-import com.telefonica.movistar.android.util.HexDump;
+import com.movistar.tvsindesco.android.system.OsConstants;
+import com.movistar.tvsindesco.android.util.HexDump;
+
 import java.nio.ByteBuffer;
 
 public class NetlinkConstants {

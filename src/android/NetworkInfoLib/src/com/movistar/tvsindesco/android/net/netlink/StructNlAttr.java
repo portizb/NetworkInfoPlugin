@@ -4,7 +4,8 @@ package com.movistar.tvsindesco.android.net.netlink;
  * Created by pablo on 2/09/16.
  */
 
-import com.telefonica.movistar.android.io.SizeOf;
+import com.movistar.tvsindesco.android.io.SizeOf;
+
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.nio.ByteOrder;

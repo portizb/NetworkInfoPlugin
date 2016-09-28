@@ -4,7 +4,7 @@ import java.net.InetAddress;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
-import com.telefonica.movistar.android.system.OsConstants;
+import com.movistar.tvsindesco.android.system.OsConstants;
 
 import android.util.Log;
 /**

@@ -2,16 +2,16 @@ package com.movistar.tvsindesco.net;
 
 import android.util.Log;
 
-import com.telefonica.movistar.android.net.netlink.NetlinkConstants;
-import com.telefonica.movistar.android.net.netlink.NetlinkErrorMessage;
-import com.telefonica.movistar.android.net.netlink.NetlinkMessage;
-import com.telefonica.movistar.android.net.netlink.NetlinkSocket;
-import com.telefonica.movistar.android.net.netlink.RtNetlinkAddressMessage;
-import com.telefonica.movistar.android.net.netlink.RtNetlinkNeighborMessage;
-import com.telefonica.movistar.android.net.netlink.RtNetlinkRouteMessage;
-import com.telefonica.movistar.android.net.netlink.StructNlMsgHdr;
-import com.telefonica.movistar.android.system.NetlinkSocketAddress;
-import com.telefonica.movistar.android.system.OsConstants;
+import com.movistar.tvsindesco.android.net.netlink.NetlinkConstants;
+import com.movistar.tvsindesco.android.net.netlink.NetlinkErrorMessage;
+import com.movistar.tvsindesco.android.net.netlink.NetlinkMessage;
+import com.movistar.tvsindesco.android.net.netlink.NetlinkSocket;
+import com.movistar.tvsindesco.android.net.netlink.RtNetlinkAddressMessage;
+import com.movistar.tvsindesco.android.net.netlink.RtNetlinkNeighborMessage;
+import com.movistar.tvsindesco.android.net.netlink.RtNetlinkRouteMessage;
+import com.movistar.tvsindesco.android.net.netlink.StructNlMsgHdr;
+import com.movistar.tvsindesco.android.system.NetlinkSocketAddress;
+import com.movistar.tvsindesco.android.system.OsConstants;
 
 import java.nio.ByteBuffer;
 import java.util.ArrayList;

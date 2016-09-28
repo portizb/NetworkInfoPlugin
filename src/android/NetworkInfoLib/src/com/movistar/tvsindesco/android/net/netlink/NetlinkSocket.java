@@ -7,10 +7,10 @@ package com.movistar.tvsindesco.android.net.netlink;
 import android.system.ErrnoException;
 import android.util.Log;
 
-import com.telefonica.movistar.android.system.Os;
-import com.telefonica.movistar.android.system.OsConstants;
-import com.telefonica.movistar.android.system.StructTimeval;
-import com.telefonica.movistar.android.system.NetlinkSocketAddress;
+import com.movistar.tvsindesco.android.system.Os;
+import com.movistar.tvsindesco.android.system.OsConstants;
+import com.movistar.tvsindesco.android.system.StructTimeval;
+import com.movistar.tvsindesco.android.system.NetlinkSocketAddress;
 
 import java.io.Closeable;
 import java.io.FileDescriptor;

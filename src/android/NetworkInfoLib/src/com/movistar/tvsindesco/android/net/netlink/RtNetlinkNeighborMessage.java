@@ -1,4 +1,4 @@
-package com.telefonica.movistar.android.net.netlink;
+package com.movistar.tvsindesco.android.net.netlink;
 
 import java.net.InetAddress;
 import java.nio.ByteBuffer;

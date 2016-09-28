@@ -28,18 +28,18 @@ This plugin is intended to launch **native** navigation apps and therefore will 
 
 ### Using the Cordova CLI
 
-#### Create the project
+#### Create the cordova project
 
     $ cordova create MiTV5 com.movistar.tvsindesco movistartv
     
 #### Install Android platform
 
-    $ cd netinfo
+    $ cd MiTV5
     $ cordova platform add android
     
 #### Install the plugin
 
-    $ cordova plugin add https://github.com/portizb/networkinformation.git
+    $ cordova plugin add https://github.com/portizb/NetworkInfoPlugin.git
     
 
 ## Building and running

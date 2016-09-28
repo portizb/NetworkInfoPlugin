@@ -1,4 +1,4 @@
-package com.telefonica.movistar.android.net.netlink;
+package com.movistar.tvsindesco.android.net.netlink;
 
 /**
  * Created by pablo on 2/09/16.

@@ -1,5 +1,8 @@
 package com.movistar.tvsindesco.net;
 
+import com.movistar.tvsindesco.android.net.netlink.RtNetlinkAddressMessage;
+import com.movistar.tvsindesco.android.net.netlink.RtNetlinkRouteMessage;
+
 /**
 * Created by pablo on 14/09/16.
 */

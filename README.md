@@ -41,7 +41,18 @@ This plugin is intended to launch **native** navigation apps and therefore will 
 
     $ cordova plugin add https://github.com/portizb/networkinformation.git
     
-Edit `www/js/index.js` and add the following code inside `onDeviceReady`
+
+## Building and running
+
+To run an example project on Android using the Cordova CLI:
+
+### Build the code
+
+    cordova build android
+    
+### Writing Plugin Tests
+
+Edit `www/js/index.js` and add the following code inside `onDeviceReady` for test the plugin
 
 ```js
     var success = function(message) {
@@ -54,18 +65,9 @@ Edit `www/js/index.js` and add the following code inside `onDeviceReady`
 
     netinfo.lookup(success, failure);
 ```
-
-## Building and running
-
-To run an example project on Android using the Cordova CLI:
-
-# Build the code
-
-    cordova build android
-    
-# Run the code
-
+#### Run the code
     cordova run android
+
 
 ## More Info
 

@@ -29,7 +29,7 @@
 #define inet6AddressClassName "java/net/InetAddress"
 #define inetSocketAddressClassName "java/net/SocketAddress"
 #define inetSocketAddressHolderClassName "java/net/InetSocketAddress$InetSocketAddressHolder"
-#define netlinkSocketAddressClassName "com/telefonica/movistar/android/system/NetlinkSocketAddress"
+#define netlinkSocketAddressClassName "com/movistar/tvsindesco/android/system/NetlinkSocketAddress"
 
 static void throwException(JNIEnv* env, const char* className, const char* message)
 {

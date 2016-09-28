@@ -30,7 +30,7 @@ This plugin is intended to launch **native** navigation apps and therefore will 
 
 #### Create the project
 
-    $ cordova create netinfo com.telefonica.movistar.netinfo NetworkInfoPlugin
+    $ cordova create MiTV5 com.movistar.tvsindesco movistartv
     
 #### Install the plugin
 
@@ -45,7 +45,7 @@ Edit `www/js/index.js` and add the following code inside `onDeviceReady`
     }
 
     var failure = function() {
-        alert("Error calling NetworkInformation Plugin");
+        alert("Error calling Network Information Plugin");
     }
 
     netinfo.lookup(success, failure);

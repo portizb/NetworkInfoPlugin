@@ -65,7 +65,7 @@ Edit `www/js/index.js` and add the following code inside `onDeviceReady` for tes
 
     netinfo.lookup(success, failure);
 ```
-#### Run the code
+### Run the code
     cordova run android
 
 

@@ -6,8 +6,8 @@ import org.json.JSONException;
 
 import android.util.Log;
 
-import com.telefonica.movistar.net.NetworkInfo;
-import com.telefonica.movistar.net.NetworkInfoProvider;
+import com.movistar.tvsindesco.net.NetworkInfo;
+import com.movistar.tvsindesco.net.NetworkInfoProvider;
 
 public class NetworkInfoPlugin extends CordovaPlugin {
 

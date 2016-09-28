@@ -1,6 +1,6 @@
 package com.movistar.tvsindesco.android.net.netlink;
 
-import com.telefonica.movistar.android.system.OsConstants;
+import com.movistar.tvsindesco.android.system.OsConstants;
 
 import java.nio.ByteBuffer;
 

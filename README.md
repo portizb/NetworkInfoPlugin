@@ -56,7 +56,10 @@ Edit `www/js/index.js` and add the following code inside `onDeviceReady` for tes
 
 ```js
     var success = function(message) {
-        alert(message);
+        alert("ipAddress: " + message.ipAddress +  
+              ", gatewayAddress: " + message.gatewayAddress +
+              ", networkAddress: " + message.networkAddress +
+              ", subnetMask: " + message.subnetMask);
     }
 
     var failure = function() {

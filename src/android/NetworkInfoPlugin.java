@@ -1,7 +1,9 @@
 package com.movistar.tvsindesco.cordova.plugin;
 
 import org.apache.cordova.*;
+
 import org.json.JSONArray;
+import org.json.JSONObject;
 import org.json.JSONException;
 
 import android.util.Log;
@@ -21,9 +23,16 @@ public class NetworkInfoPlugin extends CordovaPlugin {
             try {
 
                 NetworkInfo networkInfo = NetworkInfoProvider.getNetworkInfo();
-                String message = (networkInfo == null) ? "Network Information not found" : networkInfo.toString();
-                
-                callbackContext.success(message);
+                JSONObject json = new JSONObject();
+
+                if (networkInfo) {
+                    json.put("ipAddress", networkInfo.getIpAddress().getHostAddress());
+                    json.put("gatewayAddress", networkInfo.getGatewayAddress().getHostAddress());
+                    json.put("networkAddress", networkInfo.getNetworkAddress().getHostAddress());
+                    json.put("subnetMask", networkInfo.getSubnetMask());
+                }
+
+                callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, json));
                 return true;
 
             } catch (Exception e) {

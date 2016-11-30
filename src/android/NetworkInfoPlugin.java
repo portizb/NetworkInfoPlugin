@@ -25,7 +25,7 @@ public class NetworkInfoPlugin extends CordovaPlugin {
                 NetworkInfo networkInfo = NetworkInfoProvider.getNetworkInfo();
                 JSONObject json = new JSONObject();
 
-                if (networkInfo) {
+                if (networkInfo != null) {
                     json.put("ipAddress", networkInfo.getIpAddress().getHostAddress());
                     json.put("gatewayAddress", networkInfo.getGatewayAddress().getHostAddress());
                     json.put("networkAddress", networkInfo.getNetworkAddress().getHostAddress());

@@ -437,6 +437,13 @@ jint Java_com_movistar_tvsindesco_android_system_Os_readBytes(JNIEnv* env, jclas
 
     (*env)->SetByteArrayRegion(env, javaBytes, byteOffset, (jsize)size, buf);
 
+    if ((*env)->ExceptionOccurred()) {
+        (*env)->ExceptionDescribe();
+        
+        throwException(env, "java/lang/ArrayIndexOutOfBoundsException", "index out of bound");        
+        return (jint)0;
+    }
+    
     return (jint)size;
 }
 

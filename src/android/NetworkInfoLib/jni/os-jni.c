@@ -25,6 +25,8 @@
 #define LOG_TAG    "SO-Native"
 #define DEBUG(...)  __android_log_print(ANDROID_LOG_DEBUG, LOG_TAG, __VA_ARGS__)
 
+#define defaultExceptionClassName "java/lang/InternalError"
+
 #define inetAddressClassName "java/net/InetAddress"
 #define inet6AddressClassName "java/net/InetAddress"
 #define inetSocketAddressClassName "java/net/SocketAddress"
@@ -42,23 +44,22 @@ static void throwException(JNIEnv* env, const char* className, const char* messa
     }
 }
 
-static void throwErrnoException(JNIEnv * env, const char* className, int errnum)
+static void throwErrnoException(JNIEnv * env, int errnum)
 {
     char buffer[MAX_LOG_MESSAGE_LENGTH];
 
     if (-1 == strerror_r(errnum, buffer, MAX_LOG_MESSAGE_LENGTH))
         strerror_r(errno, buffer, MAX_LOG_MESSAGE_LENGTH);
 
-    throwException(env, className, buffer);
+    throwException(env, defaultExceptionClassName, buffer);
 }
 
-static void throwNullPointerException(JNIEnv * env, const char* className)
+static void throwNullPointerException(JNIEnv * env)
 {
     char buffer[MAX_LOG_MESSAGE_LENGTH];
-
     strcpy(buffer, "Null Pointer Exception");
 
-    throwException(env, className, buffer);
+    throwException(env, defaultExceptionClassName, buffer);
 }
 
 static jobject jniCreateFileDescriptor(JNIEnv *env, int fd)
@@ -140,7 +141,7 @@ static jobject sockaddrToInetAddress(JNIEnv* env, struct sockaddr_storage *ss, j
     jbyte* ptrBytes = (*env)->GetByteArrayElements(env, javaBytes, NULL);
 
     if (ptrBytes == NULL) {
-        throwNullPointerException(env, NULL);
+        throwNullPointerException(env);
         return NULL;
     }
 
@@ -212,7 +213,7 @@ static jboolean inetAddressToSockaddr(JNIEnv* env, jobject inetAddress, int port
     *sa_len = 0;
 
     if (inetAddress == NULL) {
-        throwNullPointerException(env, NULL);
+        throwNullPointerException(env);
         return JNI_FALSE;
     }
 
@@ -238,7 +239,7 @@ static jboolean inetAddressToSockaddr(JNIEnv* env, jobject inetAddress, int port
     jbyte* ptrBytes = (*env)->GetByteArrayElements(env, javaBytes, NULL);
 
     if (ptrBytes == NULL) {
-        throwNullPointerException(env, NULL);
+        throwNullPointerException(env);
         return JNI_FALSE;
     }
 
@@ -306,7 +307,7 @@ static jboolean javaSocketAddressToSockaddr(
         JNIEnv* env, jobject socketAddress, struct sockaddr_storage *ss, socklen_t *sa_len)
 {
     if (socketAddress == NULL) {
-        throwNullPointerException(env, NULL);
+        throwNullPointerException(env);
         return JNI_FALSE;
     }
 
@@ -328,7 +329,7 @@ jobject Java_com_movistar_tvsindesco_android_system_Os_socket(JNIEnv* env, jclas
     int fd;
 
     if ((fd = TEMP_FAILURE_RETRY(socket(domain, type, protocol))) == -1)
-        throwErrnoException (env, "socket", errno);
+        throwErrnoException (env, errno);
 
     return fd != -1 ? jniCreateFileDescriptor(env, fd) : NULL;
 }
@@ -347,7 +348,7 @@ void Java_com_movistar_tvsindesco_android_system_Os_connect(JNIEnv* env, jclass 
     int fd = jniGetFDFromFileDescriptor (env, fileDescriptor);
 
     if (TEMP_FAILURE_RETRY(connect(fd, sa, sa_len)) == -1)
-        throwErrnoException (env, "connect", errno);
+        throwErrnoException (env, errno);
 }
 
 void Java_com_movistar_tvsindesco_android_system_Os_bind(JNIEnv* env, jclass clazz, jobject fileDescriptor, jobject socketAddress)
@@ -364,7 +365,7 @@ void Java_com_movistar_tvsindesco_android_system_Os_bind(JNIEnv* env, jclass cla
     int fd = jniGetFDFromFileDescriptor (env, fileDescriptor);
 
     if (TEMP_FAILURE_RETRY(bind(fd, sa, sa_len)) == -1)
-        throwErrnoException (env, "bind", errno);
+        throwErrnoException (env, errno);
 }
 
 void Java_com_movistar_tvsindesco_android_system_Os_close(JNIEnv* env, jclass clazz, jobject fileDescriptor)
@@ -373,7 +374,7 @@ void Java_com_movistar_tvsindesco_android_system_Os_close(JNIEnv* env, jclass cl
     jniSetFileDescriptorOfFD(env, fileDescriptor, -1);
 
     if (TEMP_FAILURE_RETRY(close(fd)) == -1)
-        throwErrnoException (env, "close", errno);
+        throwErrnoException (env, errno);
 }
 
 jobject Java_com_movistar_tvsindesco_android_system_Os_getsockname(JNIEnv* env, jclass clazz, jobject fileDescriptor)
@@ -388,7 +389,7 @@ jobject Java_com_movistar_tvsindesco_android_system_Os_getsockname(JNIEnv* env, 
     int rc = TEMP_FAILURE_RETRY(getsockname(fd, sa, &byteCount));
 
     if (rc == -1) {
-        throwErrnoException(env, "getsockname", errno);
+        throwErrnoException(env, errno);
         return NULL;
     }
 
@@ -401,7 +402,7 @@ void Java_com_movistar_tvsindesco_android_system_Os_setsockoptInt(JNIEnv* env, j
     int fd = jniGetFDFromFileDescriptor(env, fileDescriptor);
 
     if (TEMP_FAILURE_RETRY(setsockopt(fd, level, option, &value, sizeof(value))) == -1)
-        throwErrnoException (env, "setsockopt", errno);
+        throwErrnoException (env, errno);
 }
 
 void Java_com_movistar_tvsindesco_android_system_Os_setsockoptTimeval(JNIEnv* env, jclass clazz, jobject fileDescriptor, jint level, jint option, jobject javaTimeval)
@@ -420,7 +421,7 @@ void Java_com_movistar_tvsindesco_android_system_Os_setsockoptTimeval(JNIEnv* en
         value.tv_usec = (*env)->GetLongField(env, javaTimeval, tvUsecFid);
 
         if (TEMP_FAILURE_RETRY(setsockopt(fd, level, option, &value, sizeof(value))) == -1)
-            throwErrnoException(env, "setsockopt", errno);
+            throwErrnoException(env, errno);
     }
 }
 
@@ -432,18 +433,17 @@ jint Java_com_movistar_tvsindesco_android_system_Os_readBytes(JNIEnv* env, jclas
 
     int fd = jniGetFDFromFileDescriptor (env, fileDescriptor);
 
-    if (-1 == (size = TEMP_FAILURE_RETRY(read(fd, buf, (size_t)bufLen))))
-        throwErrnoException(env, "read", errno);
+    if (-1 == (size = TEMP_FAILURE_RETRY(read(fd, buf, (size_t)bufLen)))) {
+        throwErrnoException(env, errno);
+        return -1;
+    }
 
     (*env)->SetByteArrayRegion(env, javaBytes, byteOffset, (jsize)size, buf);
 
-    if ((*env)->ExceptionOccurred()) {
-        (*env)->ExceptionDescribe();
-        
-        throwException(env, "java/lang/ArrayIndexOutOfBoundsException", "index out of bound");        
-        return (jint)0;
-    }
-    
+    (*env)->ReleaseByteArrayElements(env, javaBytes, buf, JNI_ABORT);
+
+    (*env)->DeleteLocalRef(env, javaBytes);
+
     return (jint)size;
 }
 
@@ -465,7 +465,7 @@ jint Java_com_movistar_tvsindesco_android_system_Os_writeBytes(JNIEnv* env, jcla
     int fd = jniGetFDFromFileDescriptor (env, fileDescriptor);
 
     if (-1 == (size = TEMP_FAILURE_RETRY(write(fd, ptrBytes + byteOffset, (size_t)byteCount))))
-        throwErrnoException(env, "write", errno);
+        throwErrnoException(env, errno);
 
     (*env)->ReleaseByteArrayElements(env, javaBytes, ptrBytes, JNI_ABORT);
 
@@ -544,7 +544,7 @@ jlong Java_com_movistar_tvsindesco_android_system_Os_sysconf(JNIEnv* env, jclass
 
     long result = sysconf(name);
     if (result == -1L && errno == EINVAL) {
-        throwErrnoException(env, "sysconf", errno);
+        throwErrnoException(env, errno);
     }
     return result;
 }
